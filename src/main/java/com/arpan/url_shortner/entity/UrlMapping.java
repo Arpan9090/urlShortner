@@ -30,12 +30,16 @@ public class UrlMapping {
 
     private LocalDateTime expiresAt;
 
+    // Many URLs can belong to One User (Optional: Can be null for guest shortens)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
     }
 
-    // Default Constructor (Required by JPA)
     public UrlMapping() {}
 
     public UrlMapping(String originalUrl, String shortCode) {
@@ -60,4 +64,7 @@ public class UrlMapping {
 
     public LocalDateTime getExpiresAt() { return expiresAt; }
     public void setExpiresAt(LocalDateTime expiresAt) { this.expiresAt = expiresAt; }
+
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
 }

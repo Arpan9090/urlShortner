@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.security.Principal;
+import java.util.List;
 
 @RestController
 public class UrlController {
@@ -21,9 +23,19 @@ public class UrlController {
 
     // 1. Endpoint to Shorten a URL
     @PostMapping("/api/v1/shorten")
-    public ResponseEntity<UrlResponse> shortenUrl(@RequestBody ShortenRequest request) {
-        UrlResponse response = urlService.shortenUrl(request);
+    public ResponseEntity<UrlResponse> shortenUrl(@RequestBody ShortenRequest request, Principal principal) {
+        String username = (principal != null) ? principal.getName() : null;
+        UrlResponse response = urlService.shortenUrl(request, username);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @GetMapping("/api/v1/my-urls")
+    public ResponseEntity<List<UrlResponse>> getMyUrls(Principal principal) {
+        if (principal == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        List<UrlResponse> urls = urlService.getUserUrls(principal.getName());
+        return ResponseEntity.ok(urls);
     }
 
     // 2. Endpoint for URL Redirection (GET /{shortCode})
