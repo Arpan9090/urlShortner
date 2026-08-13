@@ -1,0 +1,88 @@
+#root {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.container {
+  text-align: center;
+}
+
+.url-form {
+  display: flex;
+  gap: 10px;
+  margin: 25px 0;
+}
+
+.url-form input {
+  flex: 1;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.url-form button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.url-form button:hover {
+  background-color: #1d4ed8;
+}
+
+.result-card {
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  text-align: left;
+}
+
+.short-url-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.short-url-box a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.analytics-box {
+  margin-top: 15px;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.refresh-btn {
+  background: white;
+  border: 1px solid #d1d5db;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.refresh-btn:hover {
+  background: #f3f4f6;
+}
+
+.error {
+  color: #dc2626;
+  margin-top: 10px;
+}

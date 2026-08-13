@@ -34,3 +34,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# =========================
+# Frontend - Vite
+# =========================
+
+url-shortner-ui/node_modules/
+url-shortner-ui/dist/
+url-shortner-ui/.env
